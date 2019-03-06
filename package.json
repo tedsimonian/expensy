@@ -2,7 +2,7 @@
   "name": "expensy",
   "version": "1.0.0",
   "main": "bundle.js",
-  "description": "Expensy App",
+  "description": "Expensy",
   "repository": "https://github.com/tedsimonian/expensy.git",
   "author": "Ted <tedsimonian@gmail.com>",
   "license": "MIT",
