@@ -1,6 +1,9 @@
 {
   "name": "expensy",
   "version": "1.0.0",
+  "engines": {
+    "node": "10.15.0"
+  },
   "main": "bundle.js",
   "description": "Expensy",
   "repository": "https://github.com/tedsimonian/expensy.git",
@@ -9,6 +12,7 @@
   "scripts": {
     "heroku-postbuild": "npm run build:prod",
     "start": "node server/server.js",
+    "build": "webpack",
     "build:dev": "webpack",
     "build:prod": "webpack -p --env production",
     "dev-server": "webpack-dev-server",
