@@ -10,7 +10,6 @@
   "author": "Ted <tedsimonian@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "heroku-postbuild": "npm run build:prod",
     "start": "node server/server.js",
     "build": "webpack",
     "build:dev": "webpack",
