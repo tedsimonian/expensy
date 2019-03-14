@@ -9,7 +9,7 @@ const config = {
   storageBucket: process.env.FB_STORAGE_BUCKET,
   messagingSenderId: process.env.FB_MESSAGING_SENDER_ID
 };
-
+console.log(config);
 firebase.initializeApp(config);
 
 const database = firebase.database();
