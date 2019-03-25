@@ -9,6 +9,7 @@
 
 .list-body {
     margin-bottom: $m-size;
+
     @media (min-width: $desktop-breakpoint) {
         margin-bottom: $l-size;
     }
@@ -23,9 +24,10 @@
     padding: $s-size;
     text-decoration: none;
     transition: background .3s ease;
-    &:hover {
-        background: $off-white;
-    }
+
+    // &:hover {
+    //     background: $off-white;
+    // }
     @media (min-width: $desktop-breakpoint) {
         align-items: center;
         flex-direction: row;
@@ -39,6 +41,7 @@
     color: $grey;
     justify-content: center;
     padding: $m-size;
+
     &:hover {
         background: none;
     }
@@ -56,6 +59,7 @@
 
 .list-item__data {
     margin: $s-size 0 0 0;
+
     @media (min-width: $desktop-breakpoint) {
         margin: 0;
         padding-left: $m-size;
