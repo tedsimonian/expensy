@@ -1,7 +1,6 @@
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require("webpack");
-require("idempotent-babel-polyfill");
 
 process.env.NODE_ENV = process.env.NODE_ENV || "development";
 
@@ -17,7 +16,7 @@ module.exports = (env) => {
 
   return {
     mode: isProduction ? "production" : "development",
-    entry: ["idempotent-babel-polyfill", "./src/app.js"],
+    entry: ["./src/app.js"],
     output: {
       path: path.join(__dirname, "public", "dist"),
       filename: "bundle.js"
