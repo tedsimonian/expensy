@@ -9,10 +9,20 @@
 
 .list-body {
     margin-bottom: $m-size;
+    margin: 0;
+    padding: 0;
 
     @media (min-width: $desktop-breakpoint) {
         margin-bottom: $l-size;
     }
+}
+
+.expense-item-wrapper {
+    flex: 1 0 auto;
+    padding-left: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .list-item {
@@ -31,7 +41,6 @@
     @media (min-width: $desktop-breakpoint) {
         align-items: center;
         flex-direction: row;
-        justify-content: space-between;
         padding: $m-size;
     }
 }

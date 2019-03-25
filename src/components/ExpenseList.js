@@ -1,35 +1,62 @@
 import React from "react";
 import { connect } from "react-redux";
 import ExpenseListItem from "./ExpenseListItem";
+import ExpenseCalculator from "./ExpenseCalculator";
 import selectExpenses from "../selectors/expenses";
 import Checkbox from "./Checkbox";
 
 export class ExpenseList extends React.Component {
   state = {
-    checkboxes: this.props.expenses.reduce(
-      (expenses, expense) => ({
-        [expense.id]: false
-      }),
-      {}
-    )
+    checkboxes: {
+      isSelected: false,
+      amount: 0
+    }
+  };
+
+  componentWillMount() {
+    this.setToggleCheckboxStateByExpenses(this.props.expenses);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.expenses !== this.props.expenses) {
+      this.setToggleCheckboxStateByExpenses(this.props.expenses);
+    }
+  }
+
+  setToggleCheckboxStateByExpenses = expenses => {
+    const checkboxToggleState = expenses.reduce((toggleStateObj, expense) => {
+      toggleStateObj[expense.id] = {
+        isSelected: false,
+        amount: expense.amount / 100
+      };
+      return toggleStateObj;
+    }, {});
+
+    this.setState({
+      checkboxes: checkboxToggleState
+    });
   };
 
   selectAllCheckboxes = isSelected => {
+    // set state triggers a re render!
+    const checkboxes = {};
     Object.keys(this.state.checkboxes).forEach(checkbox => {
-      this.setState(prevState => ({
-        checkboxes: {
-          ...prevState.checkboxes,
-          [checkbox]: isSelected
-        }
-      }));
+      checkboxes[checkbox] = {
+        ...this.state.checkboxes[checkbox],
+        isSelected
+      };
     });
+    this.setState({ checkboxes });
   };
 
   handleCheckboxChange = id => {
     this.setState(prevState => ({
       checkboxes: {
         ...prevState.checkboxes,
-        [id]: !prevState.checkboxes[id]
+        [id]: {
+          ...prevState.checkboxes[id],
+          isSelected: !prevState.checkboxes[id].isSelected
+        }
       }
     }));
   };
@@ -46,27 +73,30 @@ export class ExpenseList extends React.Component {
           <div className="show-for-desktop">Expense</div>
           <div className="show-for-desktop">Amount</div>
         </div>
-        <div className="list-body">
+        <ul className="list-body">
           {this.props.expenses.length === 0 ? (
-            <div className="list-item list-item--message">
+            <li className="list-item list-item--message">
               <span>No expenses</span>
-            </div>
+            </li>
           ) : (
             this.props.expenses.map(expense => {
               return (
-                <Checkbox
-                  className="list-item"
-                  label={expense.id}
-                  isSelected={this.state.checkboxes[expense.id] || false}
-                  onCheckboxChange={this.handleCheckboxChange}
-                  key={expense.description}
-                >
-                  <ExpenseListItem key={expense.id} {...expense} />
-                </Checkbox>
+                <li className="list-item" key={expense.id}>
+                  <Checkbox
+                    label={expense.id}
+                    isSelected={
+                      this.state.checkboxes.hasOwnProperty(expense.id)
+                        ? this.state.checkboxes[expense.id].isSelected
+                        : false
+                    }
+                    onCheckboxChange={this.handleCheckboxChange}
+                  />
+                  <ExpenseListItem {...expense} />
+                </li>
               );
             })
           )}
-        </div>
+        </ul>
         <div className="list-header">
           <button type="button" className="button" onClick={this.selectAll}>
             Select All
@@ -75,6 +105,7 @@ export class ExpenseList extends React.Component {
             Deselect All
           </button>
         </div>
+        <ExpenseCalculator checkboxes={this.state.checkboxes} />
       </div>
     );
   }

@@ -1,0 +1,176 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render ExpenseList with empty message 1`] = `
+<div
+  className="content-container"
+>
+  <div
+    className="list-header"
+  >
+    <div
+      className="show-for-mobile"
+    >
+      Expenses
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Expense
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Amount
+    </div>
+  </div>
+  <ul
+    className="list-body"
+  >
+    <li
+      className="list-item list-item--message"
+    >
+      <span>
+        No expenses
+      </span>
+    </li>
+  </ul>
+  <div
+    className="list-header"
+  >
+    <button
+      className="button"
+      onClick={[Function]}
+      type="button"
+    >
+      Select All
+    </button>
+    <button
+      className="button"
+      onClick={[Function]}
+      type="button"
+    >
+      Deselect All
+    </button>
+  </div>
+  <ExpenseCalculator
+    checkboxes={Object {}}
+  />
+</div>
+`;
+
+exports[`should render ExpenseList with expenses 1`] = `
+<div
+  className="content-container"
+>
+  <div
+    className="list-header"
+  >
+    <div
+      className="show-for-mobile"
+    >
+      Expenses
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Expense
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Amount
+    </div>
+  </div>
+  <ul
+    className="list-body"
+  >
+    <li
+      className="list-item"
+      key="1"
+    >
+      <Checkbox
+        isSelected={false}
+        label="1"
+        onCheckboxChange={[Function]}
+      />
+      <ExpenseListItem
+        amount={195}
+        createdAt={0}
+        description="Gum"
+        id="1"
+        note=""
+      />
+    </li>
+    <li
+      className="list-item"
+      key="2"
+    >
+      <Checkbox
+        isSelected={false}
+        label="2"
+        onCheckboxChange={[Function]}
+      />
+      <ExpenseListItem
+        amount={109500}
+        createdAt={-345600000}
+        description="Rent"
+        id="2"
+        note=""
+      />
+    </li>
+    <li
+      className="list-item"
+      key="3"
+    >
+      <Checkbox
+        isSelected={false}
+        label="3"
+        onCheckboxChange={[Function]}
+      />
+      <ExpenseListItem
+        amount={4500}
+        createdAt={345600000}
+        description="Credit Card"
+        id="3"
+        note=""
+      />
+    </li>
+  </ul>
+  <div
+    className="list-header"
+  >
+    <button
+      className="button"
+      onClick={[Function]}
+      type="button"
+    >
+      Select All
+    </button>
+    <button
+      className="button"
+      onClick={[Function]}
+      type="button"
+    >
+      Deselect All
+    </button>
+  </div>
+  <ExpenseCalculator
+    checkboxes={
+      Object {
+        "1": Object {
+          "amount": 1.95,
+          "isSelected": false,
+        },
+        "2": Object {
+          "amount": 1095,
+          "isSelected": false,
+        },
+        "3": Object {
+          "amount": 45,
+          "isSelected": false,
+        },
+      }
+    }
+  />
+</div>
+`;
