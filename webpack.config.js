@@ -16,7 +16,7 @@ module.exports = env => {
 
   return {
     mode: isProduction ? "production" : "development",
-    entry: ["./src/app.js"],
+    entry: [path.join(__dirname, "./src/index.js")],
     output: {
       path: path.join(__dirname, "public", "dist"),
       publicPath: "/",
