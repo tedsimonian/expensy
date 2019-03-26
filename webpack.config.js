@@ -16,9 +16,10 @@ module.exports = env => {
 
   return {
     mode: isProduction ? "production" : "development",
-    entry: [path.resolve(__dirname, "../src/app.js")],
+    entry: ["./src/app.js"],
     output: {
       path: path.join(__dirname, "public", "dist"),
+      publicPath: "/",
       filename: "bundle.js"
     },
     module: {
